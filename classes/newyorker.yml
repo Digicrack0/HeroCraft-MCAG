@@ -1,0 +1,27 @@
+name: NewYorker
+default: true
+user-class: true
+primary: true
+secondary: false
+parents:
+    strong:
+    weak:
+description: A obnoxious New-Yorker. Fluent in the ways of the City.
+permitted-armor:
+- 'LEATHER'
+permitted-weapon:
+- 'WOOD'
+permitted-skills:
+    ALL:
+experience-sources:
+- 
+permission-skills:
+base-max-health: 20
+max-health-per-level: 0.1
+expmodifier: 1.0
+item-damage:
+  air: 1
+projectile-damage:
+  Arrow: 3
+expLoss: 0
+tier: 0
