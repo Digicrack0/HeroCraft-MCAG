@@ -40,8 +40,9 @@ public class SkillTeledodge extends PassiveSkill {
     public ConfigurationNode getDefaultConfig() {
         ConfigurationNode node = super.getDefaultConfig();
         //Config Values, stated below.
-        node.setProperty("chance-to-dodge", 1);    
+        node.setProperty("chance-to-dodge", .1);    
         node.setProperty("radius", 10);
+        node.setProperty("chance-per-level", 0.01);
         node.setProperty(Setting.DURATION.node(), 10000);
         return node;
     }
@@ -72,7 +73,7 @@ public class SkillTeledodge extends PassiveSkill {
             
             //Quick coding note here, eventually add safefall instead of +5 to height. Could still get stuck in a wall.
             if (hero.hasEffect("TDodge")) {
-                double chance = (double) getSetting(hero, "chance-to-dodge", 1, false);
+                double chance = getSetting(hero, "chance-to-dodge", 0.1, false) + (getSetting(hero, "chance-per-level", 0.01, false) * hero.getLevel());
                 
                 if (Math.random() <= chance) {
                     //Setting damage to 0
