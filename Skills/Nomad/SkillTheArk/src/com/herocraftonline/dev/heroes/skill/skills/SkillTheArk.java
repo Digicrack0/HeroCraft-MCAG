@@ -41,7 +41,7 @@ public class SkillTheArk extends ActiveSkill {
         
         int count = 1;
         int chicknum = 5;
-        if(count <= chicknum){
+        while(count <= chicknum){
             player.getWorld().spawnCreature(wTargetBlock.getLocation(),
                         CreatureType.CHICKEN);
             count++;
