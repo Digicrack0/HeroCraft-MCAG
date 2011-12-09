@@ -11,7 +11,6 @@ import com.herocraftonline.dev.heroes.Heroes;
 import com.herocraftonline.dev.heroes.hero.Hero;
 import com.herocraftonline.dev.heroes.skill.PassiveSkill;
 import com.herocraftonline.dev.heroes.skill.SkillType;
-import com.herocraftonline.dev.heroes.util.Setting;
 import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
 
@@ -40,10 +39,9 @@ public class SkillTeledodge extends PassiveSkill {
     public ConfigurationNode getDefaultConfig() {
         ConfigurationNode node = super.getDefaultConfig();
         //Config Values, stated below.
-        node.setProperty("chance-to-dodge", .1);    
-        node.setProperty("radius", 10);
+        node.setProperty("chance-to-dodge", 1);    
+        node.setProperty("radius", 40);
         node.setProperty("chance-per-level", 0.01);
-        node.setProperty(Setting.DURATION.node(), 10000);
         return node;
     }
     
@@ -73,7 +71,7 @@ public class SkillTeledodge extends PassiveSkill {
             
             //Quick coding note here, eventually add safefall instead of +5 to height. Could still get stuck in a wall.
             if (hero.hasEffect("TDodge")) {
-                double chance = getSetting(hero, "chance-to-dodge", 0.1, false) + (getSetting(hero, "chance-per-level", 0.01, false) * hero.getLevel());
+                double chance = getSetting(hero, "chance-to-dodge", 1, false) + (getSetting(hero, "chance-per-level", 0.01, false) * hero.getLevel());
                 
                 if (Math.random() <= chance) {
                     //Setting damage to 0
@@ -81,10 +79,12 @@ public class SkillTeledodge extends PassiveSkill {
                     event.setCancelled(true);
                     //Here is where we actually tp
                     hero.getPlayer().teleport(getPlugin().getServer().getWorld(location.getWorld().getName()).getBlockAt(x, y, z).getLocation());
-                    Material mat = player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType();
+                    Material mat = player.getLocation().getBlock().getRelative(BlockFace.UP).getType();
                     while(noTeleMaterials.contains(mat) == false){
-                        int adjusty = location.getBlockY() + 2;
+               
+                        int adjusty = location.getBlockY() + 5;
                          hero.getPlayer().teleport(getPlugin().getServer().getWorld(location.getWorld().getName()).getBlockAt(x, adjusty, z).getLocation());
+                    mat = player.getLocation().getBlock().getRelative(BlockFace.UP).getType();
                     }
                     broadcast(player.getLocation(), "$1 dodged an attack!", player.getDisplayName());
                 }
