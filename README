@@ -2,5 +2,5 @@ Hello, This Git is a collection of skills that Max Chen and Alec Guthrie have bu
 If you want to use any of the skills, simply open its folder, go into the dist folder and put the jar into your skill folder.
 If you want to look at the source for any of the folders, follow this path inside each skill:
 src.com.herocraftonline.dev.heros.skill.skills
-Once you are here, you can simply look at the jar 
+Once you are here, you can simply look at the .java
 Thanks.
