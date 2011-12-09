@@ -12,6 +12,9 @@ import com.herocraftonline.dev.heroes.skill.SkillType;
 import com.herocraftonline.dev.heroes.util.Setting;
 import org.bukkit.util.config.ConfigurationNode;
 
+// The Jump velocity and the safefall duration need to be tested. 
+//I cant seem to figure out how to bind this either. could be my server derping.
+
 public class SkillNomadJump extends ActiveSkill {
 
     public SkillNomadJump(Heroes plugin) {
