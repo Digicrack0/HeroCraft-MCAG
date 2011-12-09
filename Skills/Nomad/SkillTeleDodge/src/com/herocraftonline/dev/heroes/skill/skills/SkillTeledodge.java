@@ -41,7 +41,7 @@ public class SkillTeledodge extends PassiveSkill {
         ConfigurationNode node = super.getDefaultConfig();
         //Config Values, stated below.
         node.setProperty("chance-to-dodge", .1);    
-        node.setProperty("radius", 10);
+        node.setProperty("radius", 40);
         node.setProperty("chance-per-level", 0.01);
         node.setProperty(Setting.DURATION.node(), 10000);
         return node;
@@ -60,7 +60,7 @@ public class SkillTeledodge extends PassiveSkill {
             Location location = player.getLocation();
             //This is where we find our players current loc and modify it.
             //All this stuff about radius is to randomize dodge location
-            int radius = (int) getSetting(hero, "radius", 10, false);
+            int radius = (int) getSetting(hero, "radius", 40, false);
             int xRadius = (int) (Math.random()*radius);
              if (Math.random() > .5) {
             xRadius = xRadius *-1; } 
